@@ -29,8 +29,8 @@ def registerUser(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            
-
+            login(request, user)
+            return redirect('gallery')
     return render(request, 'account/loginRegister.html')
 
 def logoutUser(request):
